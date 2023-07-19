@@ -10,6 +10,7 @@ pipeline {
     stages {
         stage('clone_repo') {
             steps {
+						    sh "rm -rf for_surf"
                 echo 'Cloning repo'
                 sh 'git clone https://$GITHUB_TOKEN:x-oauth-basic@github.com/aleksey-masl/for_surf.git'
             }
