@@ -17,7 +17,7 @@ pipeline {
         }
         stage('Creating_file') {
             steps {
-                sh """  
+                sh '''  
                     cd for_surf
                     echo 'Creating the file job.log'
 								    echo "`date "+%Y-%m-%d %T"` - PRjob executed" >> job.log
@@ -28,7 +28,7 @@ pipeline {
 							      git push https://$GITHUB_TOKEN:x-oauth-basic@github.com/aleksey-masl/for_surf.git HEAD:main
 										pwd
 										git status
-									"""	
+									'''	
             }
         }
     }
