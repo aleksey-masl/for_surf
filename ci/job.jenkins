@@ -31,5 +31,12 @@ pipeline {
 									'''	
             }
         }
+			  post{
+            always{
+                emailext to: "lex230323@mail.ru",
+                subject: "Test Email",
+                body: "Test",
+                attachLog: true
+        }
     }
 }
