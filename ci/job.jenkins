@@ -20,7 +20,6 @@ pipeline {
                 sh """  
                     cd for_surf
                     echo 'Creating the file job.log'
-								    > job.log
 								    echo "`date "+%Y-%m-%d %T"` - PRjob executed" >> job.log
 								    git add .
 						        git config --global user.email jenkins@example.com
