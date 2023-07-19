@@ -1,3 +1,5 @@
+#!/usr/bin/env groovy
+
 pipeline {
     agent any
 
@@ -5,22 +7,21 @@ pipeline {
         stage('clone_repo') {
             steps {
                 echo 'Cloning repo'
-                git branch: 'main',
-                  credentialsId: 'github_token',
-                  url: 'https://github.com/aleksey-masl/for_surf.git'
+                sh git branch: 'main', credentialsId: 'github_token', url: 'https://github.com/aleksey-masl/for_surf.git'
             }
         }
         stage('Creating_file') {
             steps {
                 echo 'Creating the file job.log'
-								echo "`date "+%Y-%m-%d %T"` - PRjob executed" >> job.log
-								git add .
-								git commit -am "created a file"
+								sh > job.log
+								sh echo "`date "+%Y-%m-%d %T"` - PRjob executed" >> job.log
+								sh git add .
+								sh git commit -am "created a file"
             }
         }
         stage('Push_to_repo') {
             steps {
-							  git push -u origin main
+							  sh git push -u origin main
             }
         }
     }
