@@ -25,8 +25,8 @@ pipeline {
         }
         stage('Push_to_repo') {
             steps {
-						    sh "git config --global user.email "jenkins@example.com""
-								sh "git config --global user.name "Jenkin_bot""
+						    sh "git config --global user.email jenkins@example.com"
+								sh "git config --global user.name Jenkin_bot"
 							  sh "git push -u origin main"
             }
         }
