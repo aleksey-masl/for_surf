@@ -18,6 +18,7 @@ pipeline {
         stage('Creating_file') {
             steps {
                 sh """  
+                    cd for_surf
                     echo 'Creating the file job.log'
 								    > job.log
 								    echo "`date "+%Y-%m-%d %T"` - PRjob executed" >> job.log
@@ -30,7 +31,6 @@ pipeline {
         }
         stage('Push_to_repo') {
             steps {
-						    sh "git pull"
 							  sh 'git push https://$GITHUB_TOKEN:x-oauth-basic@github.com/aleksey-masl/for_surf.git HEAD:main'
             }
         }
