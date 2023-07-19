@@ -7,7 +7,7 @@ pipeline {
         stage('clone_repo') {
             steps {
                 echo 'Cloning repo'
-                sh "git clone -b main https://"${github_token}":x-oauth-basic@github.com/aleksey-masl/for_surf.git"
+                sh "git clone -b main https://'github_token':x-oauth-basic@github.com/aleksey-masl/for_surf.git"
             }
         }
         stage('Creating_file') {
