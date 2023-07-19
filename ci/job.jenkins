@@ -13,7 +13,6 @@ pipeline {
         stage('Creating_file') {
             steps {
                 echo 'Creating the file job.log'
-								> job.log
 								echo "`date "+%Y-%m-%d %T"` - PRjob executed" >> job.log
 								git add .
 								git commit -am "created a file"
