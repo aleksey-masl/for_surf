@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('clone_repo') {
+            steps {
+                echo 'Cloning repo'
+                git branch: 'master',
+                  credentialsId: 'github_token',
+                  url: 'https://github.com/aleksey-masl/for_surf.git'
+            }
+        }
+        stage('Creating_file') {
+            steps {
+                echo 'Creating the file job.log'
+								> job.log
+								echo "`date "+%Y-%m-%d %T"` - PRjob executed" >> job.log
+								git add .
+								git commit -am "created a file"
+            }
+        }
+        stage('Push_to_repo') {
+            steps {
+							  git push -u origin
+            }
+        }
+    }
+}
