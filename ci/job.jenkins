@@ -2,7 +2,8 @@
 
 pipeline {
     agent any
-    { 
+    environment
+		{ 
        // replace xyz with the copy pasted iD
        GITHUB_TOKEN = credentials('github_token')  
    }
