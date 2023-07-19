@@ -14,11 +14,13 @@ pipeline {
         }
         stage('Creating_file') {
             steps {
-                echo 'Creating the file job.log'
-								sh > job.log
-								sh echo "`date "+%Y-%m-%d %T"` - PRjob executed" >> job.log
-								sh git add .
-								sh git commit -am "created a file"
+                sh """  
+                    echo 'Creating the file job.log'
+								    > job.log
+								    echo "`date "+%Y-%m-%d %T"` - PRjob executed" >> job.log
+								    git add .
+								    git commit -am "created a file"
+									"""	
             }
         }
         stage('Push_to_repo') {
