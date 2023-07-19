@@ -25,7 +25,7 @@ pipeline {
         }
         stage('Push_to_repo') {
             steps {
-							  git push -u origin main
+							  sh "git push -u origin main"
             }
         }
     }
