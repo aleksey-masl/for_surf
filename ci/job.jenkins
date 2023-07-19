@@ -30,6 +30,7 @@ pipeline {
         }
         stage('Push_to_repo') {
             steps {
+						    sh "git pull"
 							  sh 'git push https://$GITHUB_TOKEN:x-oauth-basic@github.com/aleksey-masl/for_surf.git HEAD:main'
             }
         }
