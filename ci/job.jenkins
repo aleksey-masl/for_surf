@@ -25,6 +25,8 @@ pipeline {
 							      git config --global user.name Jenkin_bot
 								    git add .
 								    git commit -am "created a file"
+										pwd
+										git status
 									"""	
             }
         }
