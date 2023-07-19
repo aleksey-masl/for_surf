@@ -8,7 +8,7 @@ pipeline {
             steps {
                 echo 'Cloning repo'
                 git branch: 'main',
-								  credentialsId: ${github_token}, 
+								  credentialsId: "${github_token}", 
 									url: 'https://github.com/aleksey-masl/for_surf.git'
             }
         }
