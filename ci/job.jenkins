@@ -28,7 +28,8 @@ pipeline {
 							      git push https://$GITHUB_TOKEN:x-oauth-basic@github.com/aleksey-masl/for_surf.git HEAD:main
 										pwd
 										git status
-									'''	
+									'''
+									}
             }
         }
 			  post{
@@ -39,5 +40,4 @@ pipeline {
                 attachLog: true
 						}		
         }
-    }
 }
