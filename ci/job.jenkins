@@ -5,7 +5,8 @@ pipeline {
     environment
 		{ 
        // replace github_token with the copy pasted iD
-       GITHUB_TOKEN = credentials('github_token')  
+       GITHUB_TOKEN = credentials('github_token')
+       EMAIL_RECIPIENTS = 'lex230323@mail.ru,lex230323@gmail.com'
    }
     stages {
         stage('clone_repo') {
@@ -43,7 +44,7 @@ pipeline {
              post{
                   success{
                      emailext (
-                     to: "lex230323@mail.ru",
+                     to: $EMAIL_RECIPIENTS,
                      subject: "${env.JOB_NAME} # ${env.BUILD_NUMBER} - Successful!",
                      body: "sample - ${env.JOB_NAME} # ${env.BUILD_NUMBER} - Successful: \n\n" +
                              "Check console output at ${env.BUILD_URL} to view the results.",
@@ -51,7 +52,7 @@ pipeline {
                   }
                   failure {
                       emailext (
-                      to: "lex230323@mail.ru",
+                      to: $EMAIL_RECIPIENTS,
                       subject: "${env.JOB_NAME} # ${env.BUILD_NUMBER} - Failure!",
                       body: "sample - ${env.JOB_NAME} # ${env.BUILD_NUMBER} - Failure: \n\n" +
                                "Check console output at ${env.BUILD_URL} to view the results.",
