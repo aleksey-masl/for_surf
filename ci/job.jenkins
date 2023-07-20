@@ -4,17 +4,17 @@ pipeline {
     agent any
     environment
 		{ 
-       // replace xyz with the copy pasted iD
+       // replace github_token with the copy pasted iD
        GITHUB_TOKEN = credentials('github_token')  
    }
     stages {
         stage('clone_repo') {
             steps {
-						    sh "rm -rf for_surf"
-                echo 'Cloning repo'
-                sh 'git clone -b main https://$GITHUB_TOKEN:x-oauth-basic@github.com/aleksey-masl/for_surf.git'
-            }
-        }
+				    sh "rm -rf for_surf"
+                    echo 'Cloning repo'
+                    sh 'git clone -b main https://$GITHUB_TOKEN:x-oauth-basic@github.com/aleksey-masl/for_surf.git'
+                    }
+                }
         stage('Creating_file and pushing file') {
             steps {
                 sh '''  
@@ -31,15 +31,16 @@ pipeline {
 					git status
 					'''
 					}
-            }
+                }
         stage('Test') {
             steps {
-                sh "pwd"
-                //sh 'printenv'
-                sh "exit 1"                }
-           }
+                    sh "pwd"
+                    //sh 'printenv'
+                    //sh "exit 1"
+                }
+            }
         }
-			  post{
+             post{
                   success{
                      emailext (
                      to: "lex230323@mail.ru",
@@ -47,7 +48,7 @@ pipeline {
                      body: "sample - ${env.JOB_NAME} # ${env.BUILD_NUMBER} - Successful: \n\n" +
                              "Check console output at ${env.BUILD_URL} to view the results.",
                      attachLog: true)
-						}
+                  }
                   failure {
                       emailext (
                       to: "lex230323@mail.ru",
@@ -56,5 +57,5 @@ pipeline {
                                "Check console output at ${env.BUILD_URL} to view the results.",
                       attachLog: true)
                   }
-        }
+             }
 }
