@@ -40,10 +40,11 @@ pipeline {
         }
 			  post{
                   success{
-                     emailext to: "lex230323@mail.ru",
-                     subject: "Test Email",
+                     emailext (
+                     to: "lex230323@mail.ru",
+                     subject: "sample - ${env.BUILD_NUMBER}",
                      body: "Test",
-                      attachLog: true
+                     attachLog: true)
 						}		
         }
 }
