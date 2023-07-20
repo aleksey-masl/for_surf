@@ -42,8 +42,9 @@ pipeline {
                   success{
                      emailext (
                      to: "lex230323@mail.ru",
-                     subject: "sample - ${env.JOB_NAME} # ${env.BUILD_NUMBER} - Successful:",
-                     body: "Test",
+                     subject: "sample - ${env.JOB_NAME} # ${env.BUILD_NUMBER} - Successful!",
+                     body: "sample - ${env.JOB_NAME} # ${env.BUILD_NUMBER} - Successful: \n" +
+                             "Check console output at ${env.BUILD_URL}to view the results.",
                      attachLog: true)
 						}		
         }
